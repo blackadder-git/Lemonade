@@ -1,7 +1,7 @@
 package byui.lemonade
 
-import java.io.File
-import java.nio.file.Paths
+// import java.io.File
+// import java.nio.file.Paths
 import kotlin.system.exitProcess
 
 /*****************************************************************
@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
     do {
         println("Are you ready to play? [Y]es/[Q]uit]")
 
-        var play = readln().lowercase()
+        val play = readln().lowercase()
 
         if (play == "q" || play == "quit") {
             menu.showGoodbye()
@@ -45,14 +45,14 @@ fun main(args: Array<String>) {
         println(it)
     }*/
 
-    var stand = Stand()
+    val stand = Stand()
     stand.unpickle()
 
     do {
         stand.play()
         print("Press any key to continue, [X] to change your secret recipe or [Q] to exit")
 
-        var play = readln().lowercase()
+        val play = readln().lowercase()
 
         if (play == "x" || play == "X") {
             println("modify lemonade mix ...")
@@ -60,8 +60,9 @@ fun main(args: Array<String>) {
 
     } while (play != "q" && play != "x")
 
-    menu.showGoodbye()
-    exitProcess(0)
     // save game
     stand.pickle()
+
+    menu.showGoodbye()
+    exitProcess(0)
 }
