@@ -19,7 +19,7 @@ class Weather {
      ****************************************************************/
     fun getWeather(probability: Int, forecast: String ): String {
         var weather = "sunny"
-        var barometer = (1..10).random()
+        val barometer = (1..10).random()
 
         // e.g probability is 80% sunny, if barometer is greater than 8, forecast is inaccurate
         // a low probability is likely to be wrong while a high probability is likely to be accurate

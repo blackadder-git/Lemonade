@@ -11,10 +11,9 @@ class Customer {
      * generate pool of potential customers
      ****************************************************************/
     fun getPotentialCustomers(ads: Int) : Int {
-        var customers = 0
 
         // foot traffic
-        customers = Stand().getRandomNumber(1, 25)
+        var customers = Stand().getRandomNumber(1, 25)
         // println("DEBUG: foot traffic = $customers")
 
         // ads
@@ -22,7 +21,7 @@ class Customer {
             // every sign generates from 1-15 new customers
             for (i in 1..ads) {
                 // customers += getRandomNumber(1, 15)
-                var signs = Stand().getRandomNumber(1, 15)
+                val signs = Stand().getRandomNumber(1, 15)
                 customers += signs
                 // println("DEBUG: signs = $signs")
             }
@@ -40,7 +39,7 @@ class Customer {
      * generate pool of actual customers
      ****************************************************************/
     fun getRealCustomers(potentialCustomers: Int, weather: String) : Int {
-        var customers: Double
+        val customers: Double
         // depending on the weather, only a percentage of the customers show up
         customers = when(weather) {
             "stormy" -> potentialCustomers * .10

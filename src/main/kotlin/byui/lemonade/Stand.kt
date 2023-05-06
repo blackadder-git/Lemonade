@@ -1,11 +1,11 @@
 package byui.lemonade
 
-import kotlin.math.roundToInt
+// import kotlin.math.roundToInt
 import kotlin.random.Random
-import kotlin.system.exitProcess
+// import kotlin.system.exitProcess
 
-//import kotlinx.serialization.*
-//import kotlinx.serialization.json.*
+// import kotlinx.serialization.*
+// import kotlinx.serialization.json.*
 
 //@Serializable
 /*****************************************************************
@@ -74,7 +74,7 @@ class Stand (path: String = "new"){
         calculateIncome()
 
         // track days in collection
-        var d = Day(day, forecast, weather, cups, ads, expenses, price, cupsSold, income, recipe)
+        val d = Day(day, forecast, weather, cups, ads, expenses, price, cupsSold, income, recipe)
         days.add(d)
 
         Menu().showReport(day, probability, forecast, weather, customers, cupsSold, expenses, income, balance)
@@ -169,7 +169,7 @@ class Stand (path: String = "new"){
         do {
             println("- Ice costs $iceCost cent(s) per cup. Add? [Y]es/[N]o]")
 
-            var addIce = readln().lowercase()
+            val addIce = readln().lowercase()
 
             if (addIce == "y" || addIce == "yes") {
                 ice = iceCost
@@ -217,16 +217,14 @@ class Stand (path: String = "new"){
                 println("Please enter the price (in cents) you want to charge a cup of lemonade")
             }
         } while(!exit)
-
-
     }
 
     /*****************************************************************
-     *
+     * determine income
      ****************************************************************/
     fun calculateIncome() {
         // customers
-        var potentialCustomers = Customer().getPotentialCustomers(ads)
+        val potentialCustomers = Customer().getPotentialCustomers(ads)
 
         this.customers = Customer().getRealCustomers(potentialCustomers, weather)
 
@@ -239,17 +237,18 @@ class Stand (path: String = "new"){
     }
 
     /*****************************************************************
-     *
+     * how many cups of lemonade were sold
      ****************************************************************/
     fun cupsSold(customers: Int) : Int {
         var sold = false
         var cups = 0
         // 25% of customers like sweet, 25% like sour, 50% like refreshing
-        var sweet = (customers * .25).toInt()
-        var sour = (customers * .25).toInt()
-        var refreshing = (customers * .5).toInt()
+        val sweet = (customers * .25).toInt()
+        val sour = (customers * .25).toInt()
+        val refreshing = (customers * .5).toInt()
 
         // println("DEBUG: cost = $cost, price = $price")
+        // TODO: there must be a better way to call this loop ...
         for (i in 1..customers) {
             if (cost + .05 >= price) {
                 // println("90% of customers will buy today")
@@ -318,7 +317,7 @@ class Stand (path: String = "new"){
             // customer has purchased a cup of lemonade
             if (sold) {
                 cups++
-                var preference = getRandomNumber(1, 100)
+                val preference = getRandomNumber(1, 100)
 
                 when(recipe["mix"]) {
                     "sweet" -> {
@@ -351,7 +350,7 @@ class Stand (path: String = "new"){
     }
 
     /*****************************************************************
-     *
+     * is a purchase made
      ****************************************************************/
     fun buyLemonade(percent: Int) : Boolean {
         var buy = false
@@ -363,7 +362,7 @@ class Stand (path: String = "new"){
     }
 
     /*****************************************************************
-     *
+     * generate a random number between min and max
      ****************************************************************/
     fun getRandomNumber(min: Int, max: Int) : Int {
         // (min..max).random()
@@ -371,16 +370,16 @@ class Stand (path: String = "new"){
     }
 
     /*****************************************************************
-     *
+     * save to disk
      ****************************************************************/
     fun pickle() {
-        println("save game to file")
+        println("TODO: save game to file")
     }
 
     /*****************************************************************
-     *
+     * read from disk
      ****************************************************************/
     fun unpickle() {
-        println("read game from file")
+        println("TODO: read game from file")
     }
 }
